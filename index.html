@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actividades Académicas</title>
+    
+    <meta name="theme-color" content="#3498db">
+    <meta name="description" content="Sistema de gestión de actividades académicas">
+    <meta name="keywords" content="académico, actividades, tareas, horarios, educación">
+    <meta name="author" content="Adrian Batalla Garcia">
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="AcademiasApp">
+    <link rel="apple-touch-icon" href="icon-192x192.png">
+
+    <meta name="msapplication-TileImage" content="icon-144.png">
+    <meta name="msapplication-TileColor" content="#3498db">
+
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/png" href="icon-32.png">
+    
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <div class="connection-status" id="connectionStatus"></div>
+    
+    <header>
+        <h1>Actividades Académicas</h1>
+        <p class="subtitle">Pasa el cursor sobre cualquier tarjeta y haz clic para ver los detalles</p>
+        
+        <div class="header-buttons">
+            <button class="schedule-btn" onclick="openScheduleModal()">Horarios de Clase</button>
+            <button id="installButton" class="install-button hidden">
+                📱 Instalar App
+            </button>
+        </div>
+        
+        <div class="filter-controls">
+            <label class="toggle-container">
+                <input type="checkbox" id="showCompleted" onchange="toggleCompletedTasks()">
+                <span class="toggle-slider"></span>
+                <span class="toggle-label">Mostrar tareas vencidas</span>
+            </label>
+            <div class="tasks-counter" id="tasksCounter"></div>
+        </div>
+    </header>
+        
+    <div class="loading" id="loading">
+        <div class="spinner"></div>
+        <p>Cargando actividades...</p>
+    </div>
+
+    <div class="cards-container" id="cardsContainer"></div>
+    
+    <p class="instructions">Haz clic en cualquier tarjeta para voltearla y ver la descripción completa</p>
+  </div>
+
+  <div id="scheduleModal" class="modal">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h2>Horarios de Clase y Enlaces</h2>
+              <span class="close-btn" onclick="closeScheduleModal()">&times;</span>
+          </div>
+          <div class="modal-body">
+              <div class="schedule-container">
+                  <div class="loading-schedule" id="loadingSchedule">
+                      Cargando horarios...
+                  </div>
+                  <div id="scheduleContent"></div>
+              </div>
+          </div>
+      </div>
+  </div>
+
+  <div id="hoverMessage" class="hover-message">
+      Haz clic para ver los detalles completos de esta actividad
+  </div>
+
+  <div id="pwaPromoBanner" class="pwa-promo-banner">
+      <div class="pwa-banner-content">
+          <div class="pwa-banner-text">
+              <h4>📱 Instalar App</h4>
+              <p>Instala esta app para acceder rápidamente desde tu pantalla de inicio</p>
+          </div>
+          <div class="pwa-banner-actions">
+              <button class="pwa-banner-btn" onclick="hidePWAPromoBanner()">Ahora no</button>
+              <button class="pwa-banner-btn primary" onclick="triggerPWAInstall()">Instalar</button>
+          </div>
+      </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
