@@ -1282,19 +1282,6 @@ document.addEventListener('DOMContentLoaded', function() {
     setupConnectionMonitor();
 });
 
-if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-        navigator.serviceWorker.register('./sw.js')
-            .then((registration) => {
-                console.log('Service Worker registrado con éxito:', registration);
-            })
-            .catch((error) => {
-                console.log('Error al registrar el Service Worker:', error);
-            });
-    });
-
-}
-
 const PUBLIC_VAPID_KEY = "BAAj8AYP6CPtIBm6M0-jFHSC9Yix3TmwRfT9QY_TlzUPHV_2vV3gl0TzI1XH90r0XCkSs8FY6hrnmN90aSinIoM";
 
 async function registerPush() {
@@ -1324,3 +1311,4 @@ function urlBase64ToUint8Array(base64String) {
 }
 
 registerPush();
+
